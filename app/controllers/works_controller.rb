@@ -912,7 +912,7 @@ public
       setflash; flash[:notice] = ts("The work was not updated.")
       redirect_to user_works_path(current_user)
     else
-      setflash; flash[:notice] = ts("The work was not posted. It will be saved here in your drafts for one week, then cleaned up.")
+      setflash; flash[:notice] = ts("The work was not posted. It will be saved here in your drafts for one month, then deleted from the Archive.")
       redirect_to drafts_user_works_path(current_user)
     end
   end
