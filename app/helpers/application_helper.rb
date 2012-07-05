@@ -314,6 +314,21 @@ module ApplicationHelper
     form.hidden_field(:_destroy) + "\n" +
     link_to_function(linktext, "remove_section(this, \"#{class_of_section_to_remove}\")", :class => "hidden showme")
   end
+
+
+ # Similar to the above two methods, only for removing FAQ Question/Answer/Anchor set
+  def link_to_remove_fields(name, f)
+    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+  end
+
+  # Similar to the above two methods, only for adding FAQ Question/Answer/Anchor set
+  def link_to_add_fields(name, f, association)
+    new_object = f.object.class.reflect_on_association(association).klass.new
+    fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+      render(association.to_s.singularize + "_answer_fields", :f => builder)
+    end
+    link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
+  end
   
   def time_in_zone(time, zone=nil, user=User.current_user)
     return ts("(no time specified)") if time.blank?

@@ -16,7 +16,11 @@
     </div>
   <% end %>
   <div class="userstuff">
-    <%=raw sanitize_field(@archive_faq, :content) %>
+    <% for q in @archive_faq.questions %>
+     <a name="#<%= q.anchor %>"></a>
+    <h2><%= q.question %></h2><br />
+    <%= q.answer %>
+    <% end %>
   </div>
 </div>
 <!--/content-->

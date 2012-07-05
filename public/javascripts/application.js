@@ -285,6 +285,17 @@ function add_section(link, nested_model_name, content) {
     $j(link).parent().before(content);
 }
 
+function remove_fields(link) {
+    $j(link).prev("input[type=hidden]").val("1");
+    $j(link).closest(".fields").hide();
+}
+
+function add_fields(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
+    $j(link).parent().before(content.replace(regexp, new_id));
+}
+
 // An attempt to replace the various work form toggle methods with a more generic one
 function toggleFormField(element_id) {
     var ticky = $j('#' + element_id + '-show');

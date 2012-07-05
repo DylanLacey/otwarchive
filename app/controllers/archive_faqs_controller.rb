@@ -7,7 +7,7 @@ class ArchiveFaqsController < ApplicationController
   def index
     @archive_faqs = ArchiveFaq.order('position ASC')
 
-    respond_to do |format|
+      respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @archive_faqs }
     end
@@ -28,7 +28,7 @@ class ArchiveFaqsController < ApplicationController
   # GET /archive_faqs/new.xml
   def new
     @archive_faq = ArchiveFaq.new
-
+    1.times { @archive_faq.questions.build}
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @archive_faq }
