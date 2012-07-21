@@ -11,17 +11,13 @@
 </dd>
 <!-- The Answer -->
 <dt><%= f.label :answer, ts("Answer") %></dt>
-<dd>  <p id="toggleText">
-  <span id="plainTextNotes" style="display: inline"><%= allowed_html_instructions %></span>
-  <span id="richTextNotes" style="display: none"><%= ts("Type or paste formatted text. Select the first icon  (clipboard with a 'W') to paste documents from Microsoft Word.") %></span>
-    <span class="rtf-html-switch actions">
-      <span id="richTextLink" style="display: inline"><a href="javascript:addEditor('answer');javascript:toggle();"><%= ts('Rich text') %></a></span>
-      <span id="plainTextLink" style="display: none"><a href="javascript:removeEditor('answer');javascript:toggle();"><%= ts('HTML') %></a></span>
-    <span>
+<dd>
+<p id="toggleText">
+<span id="plainTextNotes" style="display: inline"><%= allowed_html_instructions %></span>
 </p>
-  <% use_tinymce %>
-  <div class="rtf-html-field">
-    <%= f.text_area :answer, :class => "mce-editor observe_textlength", :id => "answer" %>
+ <!-- %< use_tinymce %> -->
+
+    <%= f.text_area :answer, :id => "answer" %>
     <%= live_validation_for_field('answer',
                                   :maximum_length => ArchiveConfig.CONTENT_MAX, :minimum_length => ArchiveConfig.CONTENT_MIN,
                                   :tooLongMessage => ts("We salute your ambition! But sadly the content must be less than %{max} letters long.", :max => ArchiveConfig.CONTENT_MAX.to_s),
@@ -34,5 +30,4 @@
   <%= link_to_remove_fields(linktext, f )%>
 </p>
 </dd>
-
 </div>
