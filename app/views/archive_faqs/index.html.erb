@@ -20,6 +20,7 @@
             <ul>
             <% for q in faq.questions %>
             <li><%= link_to  q.question, archive_faq_path(faq, :anchor => q.anchor) %></li>
+            <li><%= q.screencast %></li>
             <% end %>
             </ul>
         <% end %>
