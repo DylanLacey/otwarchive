@@ -26,7 +26,7 @@
     <%= generate_countdown_html("content", ArchiveConfig.CONTENT_MAX) %>
 
 <dt><%= form.label :screencast, ts("Screencast? Enter text link") %></dt>
-<dd><%= form.text_area :screencast, :id => "screencast" %>
+<dd><%= form.text_field :screencast, :id => "screencast" %>
 </dd>
 <p class="actions" role="button">
   <% linktext = ts("Remove This Question") %>

@@ -19,12 +19,11 @@
         <li><%= link_to faq.title, faq %></li>
             <ul>
             <% for q in faq.questions %>
-            <li><%= link_to  q.question, archive_faq_path(faq, :anchor => q.anchor) %></li>
-            <li>
-            <% unless q.screencast == "" %>
-              <%= raw sanitize_field(q, :screencast) %>
-            <% end %>
-            </li>
+              <li><%= link_to  q.question, archive_faq_path(faq, :anchor => q.anchor) %></li>
+
+              <% unless q.screencast.to_s.empty? %>  <%= raw sanit %>
+                <li><%= ts("Screencast: ") %><%= raw sanitize_field(q, :screencast) %></li>
+              <% end %>
             <% end %>
             </ul>
         <% end %>
