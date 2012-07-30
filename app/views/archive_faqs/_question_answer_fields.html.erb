@@ -1,23 +1,23 @@
 <br/>
 <br/>
 <div class="fields">
-<dt><%= f.label :question, ts("Question") %></dt>
-<dd><%= f.text_field :question, :id => "question" %>
+<dt><%= form.label :question, ts("Question") %></dt>
+<dd><%= form.text_field :question, :id => "question" %>
   <%= live_validation_for_field('question', :failureMessage => ts("Please enter a Question")) %>
 </dd>
-<dt><%= f.label :anchor, ts("Anchor name") %></dt>
-<dd><%= f.text_field :anchor, :id => "anchor" %>
+<dt><%= form.label :anchor, ts("Anchor name") %></dt>
+<dd><%= form.text_field :anchor, :id => "anchor" %>
   <%= live_validation_for_field('anchor', :failureMessage => ts("Please enter an Anchor name.")) %>
 </dd>
 <!-- The Answer -->
-<dt><%= f.label :answer, ts("Answer") %></dt>
+<dt><%= form.label :answer, ts("Answer") %></dt>
 <dd>
 <p id="toggleText">
 <span id="plainTextNotes" style="display: inline"><%= allowed_html_instructions %></span>
 </p>
  <!-- %< use_tinymce %> -->
 
-    <%= f.text_area :answer, :id => "answer" %>
+    <%= form.text_area :answer, :id => "answer" %>
     <%= live_validation_for_field('answer',
                                   :maximum_length => ArchiveConfig.CONTENT_MAX, :minimum_length => ArchiveConfig.CONTENT_MIN,
                                   :tooLongMessage => ts("We salute your ambition! But sadly the content must be less than %{max} letters long.", :max => ArchiveConfig.CONTENT_MAX.to_s),
@@ -27,7 +27,7 @@
     <%= generate_countdown_html("answer", ArchiveConfig.CONTENT_MAX) %>
 <p class="actions" role="button">
   <% linktext = ts("Remove This Question") %>
-  <%= link_to_remove_fields(linktext, f )%>
+  <%= link_to_remove_fields(linktext, form )%>
 </p>
 </dd>
 </div>
