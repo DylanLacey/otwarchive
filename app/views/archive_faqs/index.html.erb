@@ -20,7 +20,11 @@
             <ul>
             <% for q in faq.questions %>
             <li><%= link_to  q.question, archive_faq_path(faq, :anchor => q.anchor) %></li>
-            <li><%= q.screencast %></li>
+            <li>
+            <% unless q.screencast == "" %>
+              <%= raw sanitize_field(q, :screencast) %>
+            <% end %>
+            </li>
             <% end %>
             </ul>
         <% end %>

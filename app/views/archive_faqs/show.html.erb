@@ -20,8 +20,8 @@
       <a name="#<%= q.anchor %>"></a>
       <h2><%= q.question %></h2><br />
       <%= q.content.html_safe %>
-      <% unless q.screencast.blank? %>
-        <% q.screencast.html_safe %>
+      <% unless q.screencast.to_s == "" %>
+        <%= raw sanitize_field(q, :screencast) %>
       <% end %>
     <% end %>
   </div>
