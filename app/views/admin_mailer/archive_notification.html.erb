@@ -1,12 +1,12 @@
-<p><%=h ts("The following archive notice has been sent:") %></p>
+<p><%= ts("The following archive notice has been sent:") %></p>
 
-<p><%=h ts("Subject:") %> <%= @subject %></p>
-<p><%=h ts("To users:") %> <%= @user_login_string %></p>
+<p><%= ts("Subject:") %> <%= @subject %></p>
+<p><%= ts("To users:") %> <%= @user_login_string %></p>
 
 <%=raw @message %>
 
-<p><%=h ts("Sent at:") %> <%= Time.now.to_s(:time_for_mailers) %></p>
-<p><%=h ts("Sent by:") %> <%= @admin_login %></p>
+<p><%= ts("Sent at:") %> <%= Time.now.to_s(:time_for_mailers) %></p>
+<p><%= ts("Sent by:") %> <%= @admin_login %></p>
 
 
 

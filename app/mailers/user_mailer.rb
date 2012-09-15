@@ -113,7 +113,7 @@ class UserMailer < BulletproofMailer::Base
     @admin_login = admin_login
     mail(
       :to => @user.email,
-      :subject => "[#{ArchiveConfig.APP_SHORT_NAME}] Admin Message #{subject}"
+      :subject => "[#{ArchiveConfig.APP_SHORT_NAME}] Admin Message" + " - " + " #{subject}"
     )
   end
 
