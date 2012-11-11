@@ -63,6 +63,9 @@ protected
     @current_admin = current_admin_session && current_admin_session.record
   end
 
+  def delete
+  end
+
   def logged_in?
     current_user.nil? ? false : true
   end

@@ -24,7 +24,7 @@
   <% if @work.posted? %>
     <li><%= link_to ts('Orphan Work'), {:controller => 'orphans', :action => 'new', :work_id => @work.id} %></li>
   <% end %>
-	<li><%= link_to ts('Delete Work'), @work, :confirm => ts('Are you sure?'), :method => :delete %></li>
+	<li><%= link_to ts('Delete Work'), [:delete, @work], :confirm => ts('Are you sure?'), :method => :delete %></li>
 </ul>					
 <!--/subnav-->
 

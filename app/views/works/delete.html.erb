@@ -1,0 +1,11 @@
+<%= form_tag request.url, method: :delete do %>
+    <h2>Work Deletion</h2>
+    <br>
+    <%= ts("You are attempting to delete the work titled: #{@work.title}. This CANNOT be undone.") %>
+    <p>
+      <%= submit_tag "Destroy" %>
+      <% if request.referrer.present? %>
+          or <%= link_to "cancel", request.referer %>
+      <% end %>
+    </p>
+<% end %>
