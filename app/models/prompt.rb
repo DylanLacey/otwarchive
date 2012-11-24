@@ -9,6 +9,8 @@ class Prompt < ActiveRecord::Base
   # maximum number of options to allow to be shown via checkboxes
   MAX_OPTIONS_FOR_CHECKBOXES = 10
 
+  # ASSOCIATIONS
+
   belongs_to :collection
   belongs_to :pseud
   has_one :user, :through => :pseud
@@ -22,10 +24,23 @@ class Prompt < ActiveRecord::Base
   belongs_to :optional_tag_set, :class_name => "TagSet", :dependent => :destroy
   accepts_nested_attributes_for :optional_tag_set
   has_many :optional_tags, :through => :optional_tag_set, :source => :tag
-  
+
   has_many :request_claims, :class_name => "ChallengeClaim", :foreign_key => 'request_prompt_id'
-  
+
+  # SCOPES
+
   scope :claimed, joins("INNER JOIN challenge_claims on prompts.id = challenge_claims.request_prompt_id")
+
+  scope :in_collection, lambda {|collection| where(collection_id: collection.id) }
+
+  scope :unused, {:conditions => {:used_up => false}}
+
+  scope :with_tag, lambda { |tag|
+    joins("JOIN set_taggings ON set_taggings.tag_set_id = prompts.tag_set_id").
+    where("set_taggings.tag_id = ?", tag.id)
+  }
+
+  # CALLBACKS
 
   before_destroy :clear_claims
   def clear_claims
@@ -33,11 +48,12 @@ class Prompt < ActiveRecord::Base
     request_claims.each {|claim| claim.destroy}
   end
 
-  # VALIDATION
+  # VALIDATIONS
+
   attr_protected :description_sanitizer_version
 
   validates_presence_of :collection_id
-  
+
   validates_presence_of :challenge_signup
   before_save :set_pseud
   def set_pseud
@@ -57,6 +73,9 @@ class Prompt < ActiveRecord::Base
   def description_required?
     (restriction = get_prompt_restriction) && restriction.description_required
   end
+  validates_length_of :description,
+    :maximum => ArchiveConfig.NOTES_MAX,
+    :too_long => ts("must be less than %{max} letters long.", :max => ArchiveConfig.NOTES_MAX)
   def title_required?
     (restriction = get_prompt_restriction) && restriction.title_required
   end
@@ -79,13 +98,13 @@ class Prompt < ActiveRecord::Base
       # make sure tagset has no more/less than the required/allowed number of tags of each type
       TagSet::TAG_TYPES.each do |tag_type|
         # get the tags of this type the user has specified
-        taglist = tag_set ? eval("tag_set.#{tag_type}_taglist") : []        
+        taglist = tag_set ? eval("tag_set.#{tag_type}_taglist") : []
         tag_count = taglist.count
 
         # check if user has chosen the "Any" option
         if self.send("any_#{tag_type}")
           if tag_count > 0
-            errors.add(:base, ts("^You have specified tags for %{tag_type} in your %{prompt_type} but also chose 'Any,' which will override them! Please only choose one or the other.", 
+            errors.add(:base, ts("^You have specified tags for %{tag_type} in your %{prompt_type} but also chose 'Any,' which will override them! Please only choose one or the other.",
                                 :tag_type => tag_type, :prompt_type => prompt_type))
           end
           next
@@ -114,7 +133,7 @@ class Prompt < ActiveRecord::Base
   end
 
   # make sure that if there is a specified set of allowed tags, the user's choices
-  # are within that set, or otherwise canonical 
+  # are within that set, or otherwise canonical
   validate :allowed_tags
   def allowed_tags
     restriction = get_prompt_restriction
@@ -135,7 +154,7 @@ class Prompt < ActiveRecord::Base
         else
           noncanonical_taglist = tag_set.send("#{tag_type}_taglist").reject {|t| t.canonical}
           unless noncanonical_taglist.empty?
-            errors.add(:base, ts("^These %{tag_type} tags in your %{prompt_type} are not canonical and can't be used unless the moderator requests them to be added: %{taglist}. Please contact Support to resolve this issue.",
+            errors.add(:base, ts("^These %{tag_type} tags in your %{prompt_type} are not canonical and can't be used unless the moderator requests them to be added: %{taglist}. Please contact your challenge moderator.",
               :tag_type => tag_type,
               :prompt_type => self.class.name.downcase,
               :taglist => noncanonical_taglist.collect(&:name).join(ArchiveConfig.DELIMITER_FOR_OUTPUT)))
@@ -144,7 +163,7 @@ class Prompt < ActiveRecord::Base
       end
     end
   end
-  
+
   # make sure that if any tags are restricted to fandom, the user's choices are
   # actually in the fandom they have chosen.
   validate :restricted_tags
@@ -157,7 +176,7 @@ class Prompt < ActiveRecord::Base
           disallowed_taglist = tag_set ? eval("tag_set.#{tag_type}_taglist") - allowed_tags : []
           # check for tag set associations
           disallowed_taglist.reject! {|tag| TagSetAssociation.where(:tag_id => tag.id, :parent_tag_id => tag_set.fandom_taglist).exists?}
-          unless disallowed_taglist.empty?            
+          unless disallowed_taglist.empty?
             errors.add(:base, ts("^These %{tag_type} tags in your %{prompt_type} are not in the selected fandom(s), %{fandom}: %{taglist} (Your moderator may be able to fix this.)",
                               :prompt_type => self.class.name.downcase,
                               :tag_type => tag_type, :fandom => tag_set.fandom_taglist.collect(&:name).join(ArchiveConfig.DELIMITER_FOR_OUTPUT),
@@ -167,7 +186,9 @@ class Prompt < ActiveRecord::Base
       end
     end
   end
-      
+
+  # INSTANCE METHODS
+
   # make sure we are not blank
   def blank?
     return false if (url || description)
@@ -180,7 +201,7 @@ class Prompt < ActiveRecord::Base
     return false if tagcount > 0
     true # everything empty
   end
-  
+
   def can_delete?
     if challenge_signup && !challenge_signup.can_delete?(self)
       false
@@ -188,10 +209,6 @@ class Prompt < ActiveRecord::Base
       true
     end
   end
-
-  scope :in_collection, lambda {|collection| { :conditions => ["collection.id = ?", collection.id] }}
-
-  scope :unused, {:conditions => {:used_up => false}}
   
   def unfulfilled_claims
     self.request_claims.unfulfilled_in_collection(self.collection)
