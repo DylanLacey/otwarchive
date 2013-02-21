@@ -1,4 +1,8 @@
 class KudoMailer < ActionMailer::Base
+  # Translation
+  include OtwtranslationHelper
+  helper :otwtranslation
+
   include Resque::Mailer # see README in this directory
 
   layout 'mailer'

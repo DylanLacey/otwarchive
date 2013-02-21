@@ -1,6 +1,8 @@
 PROFILER_SESSIONS_FILE = 'used_tags.txt'
 
 class ApplicationController < ActionController::Base
+  # Translation
+  include OtwtranslationHelper
 
   helper :all # include all helpers, all the time
 

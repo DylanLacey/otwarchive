@@ -78,6 +78,8 @@ class CommentsController < ApplicationController
     elsif params[:tag_id]
       @commentable = Tag.find_by_name(params[:tag_id])
       @page_subtitle = @commentable.try(:name)
+    elsif params[:translation_id]
+      @commentable = Otwtranslation::Translation.find(params[:translation_id])
     end
   end
 
@@ -122,6 +124,8 @@ class CommentsController < ApplicationController
             @commentable.title
           when /Comment/
             ts("Previous Comment")
+          when /Translation/
+            @name = "#{truncate(@commentable.label)}"
           else
             @commentable.class.name
         end

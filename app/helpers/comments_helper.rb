@@ -81,7 +81,11 @@ module CommentsHelper
   end
 
   def show_comments_link(commentable)
-    if commentable.count_visible_comments > 0
+    if commentable.is_a?(Otwtranslation::Translation)
+      commentable_id = :translation_id
+      commentable_value = commentable.id
+    else
+      if commentable.count_visible_comments > 0
       commentable_id = commentable.is_a?(Tag) ?
                           :tag_id :
                           "#{commentable.class.to_s.underscore}_id".to_sym
@@ -95,10 +99,15 @@ module CommentsHelper
                   commentable_id => commentable_value,
                   :view_full_work => params[:view_full_work]),
           :remote => true)
+      end
     end
   end
 
   def hide_comments_link(commentable)
+    if commentable.is_a?(Otwtranslation::Translation)
+      commentable_id = :translation_id
+      commentable_value = commentable.id
+    else
     commentable_id = commentable.is_a?(Tag) ?
                         :tag_id :
                         "#{commentable.class.to_s.underscore}_id".to_sym
@@ -112,6 +121,7 @@ module CommentsHelper
               commentable_id => commentable_value,
               :view_full_work => params[:view_full_work]),
       :remote => true)
+    end
   end
 
   #### HELPERS FOR REPLYING TO COMMENTS #####

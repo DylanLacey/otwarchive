@@ -1,0 +1,17 @@
+# Where to access the tools pages, e.g. /translation/phrases
+MOUNT_AT: 'translation'
+
+# The version of the host application. Change this if you deploy code
+# so that you can spot unused phrases
+VERSION: '0.9.5'
+
+DEFAULT_LANGUAGE: 'en'
+
+ALLOWED_TRANSLATIONS_HTML: ['em', 'strong', 'i', 'b']
+
+# After how many minutes to expire statistics on some of the index pages
+STATS_CACHE_EXPIRY: 5
+
+# Where to search for mails templastes to display them in the interface
+# (relative to RAILS_ROOT)
+MAILS_TEMPLATE_PATHS: ["/app/views/*_mailer/*.erb"]
