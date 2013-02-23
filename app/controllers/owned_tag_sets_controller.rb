@@ -176,8 +176,6 @@ class OwnedTagSetsController < ApplicationController
     rescue
       setflash; flash[:error] = ts("We couldn't delete that right now, sorry! Please try again later.")
     end
-    #@tag_set.destroy
-    #setflash; flash[:notice] = ts("Tag set was successfully deleted.")
     redirect_to tag_sets_path
   end
 

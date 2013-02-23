@@ -90,6 +90,7 @@ Otwarchive::Application.routes.draw do
       collection do
         put :update_multiple
         post :destroy_multiple
+        get :confirm_destroy_multiple
       end
       member do
         get :confirm_delete
