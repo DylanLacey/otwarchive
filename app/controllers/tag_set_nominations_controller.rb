@@ -194,7 +194,7 @@ class TagSetNominationsController < ApplicationController
     end
 
     @tag_set.clear_nominations!
-    setflash; flash[:notice] = ts("All nominations for this tag set have been cleared.")
+    setflash; flash[:notice] = ts("All nominations for this Tag Set have been cleared.")
     redirect_to tag_set_path(@tag_set)
   end
 
