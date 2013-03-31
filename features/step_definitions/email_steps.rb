@@ -60,7 +60,7 @@ Then(/^#{capture_email} should not contain "(.*)"$/) do |email_ref, text|
 end
 
 Then(/^#{capture_email} should link to (.+)$/) do |email_ref, page|
-  email(email_ref).body.should =~ /#{path_to(page)}/
+  email(email_ref).text_part.body.should =~ /#{path_to(page)}/
 end
 
 Then(/^show me the emails?$/) do
