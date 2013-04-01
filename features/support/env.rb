@@ -14,8 +14,18 @@ require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 #require 'cucumber/rails/active_record'
 #require 'cucumber/web/tableish'
 require 'capybara/rails'
+require 'sauce/cucumber'
 require 'capybara/cucumber'
 require 'capybara/session'
+require 'sauce/cucumber'
+
+# SauceLabs integration
+Sauce.config do |c|
+  c[:start_tunnel] = !(ENV['DISABLE_TUNNEL'] == '1')
+end
+
+Capybara.javascript_driver = :selenium
+
 # The below fix is no longer required
 #require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links with onclick javascript handlers without using @culerity or @javascript
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In

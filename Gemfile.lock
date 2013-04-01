@@ -67,6 +67,7 @@ GEM
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.8.0)
+    cmdparse (2.0.5)
     cocaine (0.2.0)
     columnize (0.3.1)
     configuration (1.1.0)
@@ -96,7 +97,7 @@ GEM
       json (>= 1.4.6)
     google_visualr (2.1.2)
     hashr (0.0.21)
-    highline (1.6.2)
+    highline (1.6.16)
     htmlentities (4.2.1)
     i18n (0.5.0)
     jquery-rails (0.2.7)
@@ -124,13 +125,14 @@ GEM
     mysql2 (0.2.6)
     nested_has_many_through (0.0.2)
       rails (>= 3.0.0)
+    net-http-persistent (2.8)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.2.1)
-    net-ssh-gateway (1.1.0)
-      net-ssh (>= 1.99.1)
+    net-ssh (2.6.6)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     newrelic-redis (1.4.0)
       newrelic_rpm (~> 3.0)
       redis (< 4.0)
@@ -212,6 +214,19 @@ GEM
     rubyzip (0.9.9)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
+    sauce (2.3.4)
+      childprocess (>= 0.1.6)
+      cmdparse (>= 2.0.2)
+      highline (>= 1.5.0)
+      json (>= 1.2.0)
+      net-http-persistent
+      net-ssh
+      net-ssh-gateway
+      rest-client
+      selenium-webdriver (>= 0.1.2)
+    sauce-cucumber (2.3.1)
+      cucumber (>= 1.2.0)
+      sauce (>= 2.3.0)
     selenium-webdriver (2.31.0)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
@@ -299,6 +314,8 @@ DEPENDENCIES
   rspec-rails (>= 2.6.0)
   ruby-debug19
   sanitize
+  sauce
+  sauce-cucumber
   shoulda
   timeliness
   tire

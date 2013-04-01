@@ -76,6 +76,8 @@ gem 'newrelic-redis'
 gem "google_visualr", ">= 2.1"
 
 group :test do
+  gem 'sauce'
+  gem 'sauce-cucumber'
   gem 'rspec-rails', '>=2.6.0'
   gem 'pickle'
   gem 'shoulda'
@@ -83,6 +85,7 @@ group :test do
   gem "capybara", "~> 2.0.2"
   gem 'database_cleaner'
   gem 'cucumber-rails', '>=1.2.1', :require => false
+  gem 'sauce-cucumber', :require => false
   gem 'cucumber', '>=1.0.0'
   gem 'gherkin', '>=2.4.1' 
   gem 'launchy'    # So you can do Then show me the page
