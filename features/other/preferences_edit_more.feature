@@ -8,7 +8,7 @@ Feature: Preferences
   And I post the work "Adult Work by mywarning1"
   When I edit the work "Adult Work by mywarning1"
     And I select "Mature" from "Rating"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Update"
   When I am logged in as "mywarning2"
     And I go to my preferences page
@@ -34,7 +34,7 @@ Feature: Preferences
     And I am logged in as "tasteless"
   When I set up the draft "Big and Loud"
     And I select "Basic Formatting" from "work_work_skin_id"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
     And I go to the "Big and Loud" work page
   Then I should find ".userstuff .font-murkyyellow" within "style"

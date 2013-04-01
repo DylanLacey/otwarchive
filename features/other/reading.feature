@@ -122,7 +122,7 @@ Feature: Reading count
   When I view the work "some work"
     And I follow "Add Chapter"
     And I fill in "content" with "Second blah blah"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
   Then I should see "some work"
   When I am logged out

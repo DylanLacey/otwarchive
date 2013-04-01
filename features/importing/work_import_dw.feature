@@ -93,7 +93,7 @@ Feature: Import Works from DW
       And I should see "Importing Test"
     When I set the publication date to today
       And I check "No Archive Warnings Apply"
-    When I press "Preview"
+    When I press "preview_button"
     Then I should see "Importing Test"
     When I press "Post"
     Then I should see "Work was successfully posted."

@@ -12,7 +12,7 @@ Feature: Download a work
     And I fill in "Fandoms" with "No Fandom"
     And I fill in "Work Title" with "Tittle with doubble letters"
     And I fill in "content" with "some random stuff"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   Then I should see the text with tags "Tittle%20with%20doubble%20letters.mobi"
   When I follow "MOBI"
@@ -37,7 +37,7 @@ Feature: Download a work
       "Has double quotes"
       """
     And I fill in "content" with "some random stuff"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   When I follow "MOBI"
   When I go to the work page with title "Has double quotes"
@@ -54,7 +54,7 @@ Feature: Download a work
       Первый_маг
       """
     And I fill in "content" with "some random stuff"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   # TODO: Think about whether we can invent a better name than this
   Then I should see the text with tags "_.mobi"
@@ -73,7 +73,7 @@ Feature: Download a work
       Has curly’d quotes
       """
     And I fill in "content" with "some random stuff"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   When I follow "MOBI"
   When I go to the work page with title Has curly’d quotes
@@ -90,7 +90,7 @@ Feature: Download a work
       "Hàs curly’d quotes"
       """
     And I fill in "content" with "some random stuff"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   When I follow "MOBI"
   When I go to the work page with title "Hàs curly’d quotes"
@@ -153,7 +153,7 @@ Feature: Download a work
       ♥ and é Türkçe Karakterler başlıkta nasıl görünüyor
       """
     And I fill in "content" with "some random stuff"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   When I follow "MOBI"
   When I go to the work page with title ♥ and é Türkçe Karakterler başlıkta nasıl görünüyor
@@ -166,7 +166,7 @@ Feature: Download a work
       à ø something
       """
     And I fill in "content" with "some random stuff"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   When I follow "MOBI"
   When I go to the work page with title à ø something

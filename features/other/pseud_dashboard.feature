@@ -80,7 +80,7 @@ Feature: Pseud dashboard
 
   When I edit the work "Revenge of the Sith"
     And I fill in "Fandoms" with "Stargatte SG-oops"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Update"
   Then I should see "Work was successfully updated"
   When I follow "myself"

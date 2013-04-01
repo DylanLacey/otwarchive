@@ -138,7 +138,7 @@ Scenario: editing existing work should also send email
   When I edit the work "Followup"
     And all emails have been delivered
     And I list the work "Worldbuilding Two" as inspiration
-    And I press "Preview"
+    And I press "preview_button"
   When I press "Update"
   Then I should see "Work was successfully updated"
     And I should see "Inspired by Worldbuilding Two by inspiration"
@@ -224,14 +224,14 @@ Scenario: Listing external works as inspirations
     And I fill in "content" with "That could be an amusing crossover."
     And I check "parent-options-show"
     And I fill in "Url" with "google.com"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see a save error message
     And I should see "A parent work outside the archive needs to have a title."
     And I should see "A parent work outside the archive needs to have an author."
   When I fill in "Title" with "Worldbuilding"
     And I fill in "Author" with "BNF"
     And I check "This is a translation"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Draft was successfully created"
   When I press "Post"
   Then I should see "Work was successfully posted"
@@ -240,13 +240,13 @@ Scenario: Listing external works as inspirations
     And I check "parent-options-show"
     And I fill in "Url" with "testarchive.transformativeworks.org"
     And "issue 1806" is fixed
-    # And I press "Preview"
+    # And I press "preview_button"
   # Then I should see a save error message
     # And I should see "A parent work outside the archive needs to have a title."
     # And I should see "A parent work outside the archive needs to have an author."
   When I fill in "Title" with "Worldbuilding Two"
     And I fill in "Author" with "BNF"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Preview"
   When I press "Update"
   Then I should see "Work was successfully updated"
@@ -260,7 +260,7 @@ Scenario: Listing external works as inspirations
     And I fill in "Url" with "this.is.an.invalid/url"
     And I fill in "Title" with "Worldbuilding Two"
     And I fill in "Author" with "BNF"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Parent work info would not save."
     
 @work_external_language
@@ -281,7 +281,7 @@ Scenario: External work language
     And I fill in "Author" with "BNF"
     And I select "Deutsch" from "Language"
     And I check "This is a translation"    
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Draft was successfully created"
   When I press "Post"
   Then I should see "Work was successfully posted"

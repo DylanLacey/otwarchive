@@ -3,15 +3,16 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file 
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
+require 'cucumber/rails'
 
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
-require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
-require 'cucumber/rails/rspec'
-require 'cucumber/rails/world'
-require 'cucumber/rails/active_record'
-require 'cucumber/web/tableish'
+#require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
+#require 'cucumber/rails/rspec'
+#require 'cucumber/rails/world'
+#require 'cucumber/rails/active_record'
+#require 'cucumber/web/tableish'
 require 'capybara/rails'
 require 'capybara/cucumber'
 require 'capybara/session'

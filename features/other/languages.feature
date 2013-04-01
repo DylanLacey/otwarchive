@@ -23,7 +23,7 @@ Feature: Languages
     And I post the work "Die Rache der Sith"
     And I follow "Edit"
     And I select "Deutsch" from "Choose a language"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Update"
   Then I should see "Die Rache der Sith"
   

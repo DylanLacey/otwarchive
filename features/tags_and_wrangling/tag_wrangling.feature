@@ -59,7 +59,7 @@ Feature: Tag wrangling
       And I fill in "Characters" with "Daniel Jackson, Jack O'Neil"
       And I fill in "Relationships" with "McShep"
       And I fill in "content" with "That could be an amusing crossover."
-      And I press "Preview"
+      And I press "preview_button"
       And I press "Post"
       Then I should see "Work was successfully posted."
     

@@ -67,7 +67,7 @@ Feature: Tag Wrangling - special cases
   When I post the work "Epic sci-fi"
     And I follow "Edit"
     And I fill in "Characters" with "Evan ?, James T. Kirk"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Update"
   Then I should see "Work was successfully updated"
   When I view the tag "Evan ?"

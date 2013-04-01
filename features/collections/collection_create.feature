@@ -40,7 +40,7 @@ Scenario: Post to collection from the work edit page
   Then I should see "collect-y work"
   When I edit the work "collect-y work"
     And I fill in "work_collection_names" with "collection_thing"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Update"
   Then I should see "collect-y work"
     And I should see "Collections: My Collection Thing"
@@ -56,7 +56,7 @@ Scenario: Post to collection from the collection home page
   Then I should see "Post New Work"
     And I should see "collection_thing" in the "Post to Collections / Challenges" input
   When I fill in the basic work information for "My Collected Work"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "My Collection Thing" within ".collections"
   When I press "Post"
   Then I should see "My Collected Work"

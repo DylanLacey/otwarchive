@@ -38,7 +38,7 @@ Scenario: tag cloud should only contain top-level canonical freeforms in "No Fan
     And I fill in "Work Title" with "Silliness"
     And I fill in "Additional Tags" with "100 words, five things, objects in space, Sentient Serenity, Episode Tag, Non-canonical NoFandom, Non-canonical Fandomish, Non-canonical unwrangled, Canonical Fandomish, Canonical unwrangled"
     And I fill in "content" with "And then everyone was kidnapped by an alien bus."
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
   Then I should see "Work was successfully posted."
 
@@ -70,7 +70,7 @@ Scenario: tag cloud should only contain top-level canonical freeforms in "No Fan
   When I post the work "Test"
     And I edit the work "Test"
     And I fill in "Additional Tags" with "Five Things"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Update"
     And I follow "Tags" within "ul.navigation"
   Then I should not see "Five Things"

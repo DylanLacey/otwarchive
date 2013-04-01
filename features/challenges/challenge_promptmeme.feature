@@ -778,7 +778,7 @@ Feature: Prompt Meme Challenge
   When I start to fulfill my claim
   Then the "High School AU SG1 in Battle 12 (Anonymous)" checkbox should not be checked
     And the "random SGA love in Battle 12 (Anonymous)" checkbox should be checked
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   When I view the work "Fulfilled Story"
   Then I should see "Stargate Atlantis"
@@ -796,7 +796,7 @@ Feature: Prompt Meme Challenge
   When I start to fulfill my claim
   # the anon prompt will already by checked
     And I check "crack in Battle 12 (myname2)"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
   When I view the work "Fulfilled Story"
   # fandoms are not filled in automatically anymore, so we check that both prompts are marked as filled by having one anon and one non-anon
@@ -997,7 +997,7 @@ Feature: Prompt Meme Challenge
     And I select "Not Rated" from "Rating"
     And I check "No Archive Warnings Apply"
     And I fill in "content" with "This is an exciting story about Atlantis, but in a different universe this time"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   Then I should see "Work was successfully posted"
   
@@ -1010,7 +1010,7 @@ Feature: Prompt Meme Challenge
   When I start to fulfill my claim
     And I fill in "Work Title" with "Fulfilled Story-thing"
     And I fill in "content" with "This is an exciting story about Atlantis, but in a different universe this time"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   When I view the work "Fulfilled Story-thing"
   Then I should see "In response to a prompt by myname4"
@@ -1026,7 +1026,7 @@ Feature: Prompt Meme Challenge
   When I start to fulfill my claim
     And I fill in "Work Title" with "Fulfilled Story-thing"
     And I fill in "content" with "This is an exciting story about Atlantis, but in a different universe this time"
-  When I press "Preview"
+  When I press "preview_button"
     And I press "Post"
   When I am on my user page
   Then I follow "Claims"
@@ -1260,7 +1260,7 @@ Feature: Prompt Meme Challenge
   When I follow "New Work"
   When I fill in the basic work information for "Existing work"
     And I check "Battle 12 (myname4)"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Draft was successfully created"
     And I should see "In response to a prompt by myname4"
     And 0 emails should be delivered
@@ -1281,7 +1281,7 @@ Feature: Prompt Meme Challenge
   When I am logged in as "myname4"
   When I claim a prompt from "Battle 12"
   When I start to fulfill my claim
-    And I press "Preview"
+    And I press "preview_button"
   When I go to the "Battle 12" requests page
   Then I should see "Claimed By"
     And I should not see "Fulfilled By"
@@ -1315,7 +1315,7 @@ Feature: Prompt Meme Challenge
   When I follow "Fulfill"
     And I fill in the basic work information for "Existing work"
     And I check "random SGA love in Battle 12 (Anonymous)"
-    And I press "Preview"
+    And I press "preview_button"
   When I am on my user page
     And I follow "Drafts"
     And all emails have been delivered
@@ -1347,7 +1347,7 @@ Feature: Prompt Meme Challenge
   When I post the work "Here's one I made earlier"
     And I edit the work "Here's one I made earlier"
     And I check "Battle 12"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should find "draft"
     And I should see "In response to a prompt by"
     # TODO: Figure out why this isn't showing - it works fine when testing manually

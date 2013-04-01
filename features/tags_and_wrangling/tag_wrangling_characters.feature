@@ -72,7 +72,7 @@ Scenario: character wrangling - syns, mergers, characters, autocompletes
     And I fill in "Work Title" with "Silliness"
     And I fill in "Characters" with "1st Doctor, One"
     And I fill in "content" with "And then everyone was kidnapped by an alien bus."
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
   Then I should see "Work was successfully posted."
   

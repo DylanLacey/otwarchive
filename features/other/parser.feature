@@ -13,12 +13,12 @@ Feature: Parsing HTML
 
     This is paragraph 2.
     """
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Preview"
     And I should see the text with tags "<p>This is paragraph 1.</p><p>This is paragraph 2.</p>"
   When I press "Post"
    And I follow "Edit"
-   And I press "Preview"
+   And I press "preview_button"
   Then I should see the text with tags "<p>This is paragraph 1.</p><p>This is paragraph 2.</p>"
 
   
@@ -32,7 +32,7 @@ Feature: Parsing HTML
 
     Another paragraph.
     """
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Preview"
     And I should see the text with tags "<p>A paragraph</p><p>Another paragraph.</p>" 
 

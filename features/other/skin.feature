@@ -243,7 +243,7 @@ Feature: creating and editing skins
   Then I should see "Awesome Work Skin"
   When I set up the draft "Story With Awesome Skin"
     And I select "Awesome Work Skin" from "work_work_skin_id"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Preview"
     And I should see "color: purple" within "style"
   When I press "Post"

@@ -11,7 +11,7 @@ Feature: Sanitizing HTML
     <!-- #exec cmd=\"/bin/echo \" -->
     <script src=http://ha.ckers.org/xss.js></script>
     """
-    And I press "Preview"
+    And I press "preview_button"
     Then I should see "Preview"
     And I should not see the text with tags '<!-- #exec cmd='
     And I should not see the text with tags '<script src=http://ha.ckers.org/xss.js></script>'
@@ -36,14 +36,14 @@ Feature: Sanitizing HTML
     And I fill in "Fandoms" with "Supernatural"
     And I fill in "Work Title" with "All Hell Breaks Loose"
     And I fill in "content" with 'BODY{-moz-binding:url("http://ha.ckers.org/xssmoz.xml#xss")}'
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Preview"
     And I should not see "XSS"
     And I should not find "XSS"
     And I should see "BODY{-moz-binding:url("
   When I press "Edit"
     And I fill in "content" with "behavior: url(xss.htc);"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Preview"
     And I should not see "XSS"
     And I should not find "XSS"

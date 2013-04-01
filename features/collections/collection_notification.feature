@@ -27,7 +27,7 @@ Feature: Collectible items email
      And I go to first_user's user page
     When I edit the work "collect-y work"
      And I fill in "work_collection_names" with "AntarcticPenguins"
-     And I press "Preview"
+     And I press "preview_button"
     Then I should see "Preview"
      And I press "Update"
     Then I should see "Work was successfully updated."
@@ -36,7 +36,7 @@ Feature: Collectible items email
      And 1 email should be delivered to test@archiveofourown.org
     When I edit the work "collect-y work"
     And I fill in "work_collection_names" with "AntarcticPenguins, PolarBears"
-    And I press "Preview"
+    And I press "preview_button"
    Then I should see "Preview"
     And I press "Update"
    Then I should see "Work was successfully updated."

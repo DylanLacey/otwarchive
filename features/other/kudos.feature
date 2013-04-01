@@ -64,7 +64,7 @@ Feature: Leave kudos
     And I post the chaptered work "Epic Saga"
     And I follow "Add Chapter"
     And I fill in "content" with "third chapter is a draft"
-    And I press "Preview"
+    And I press "preview_button"
   When I am logged in as "myname3"
     And I view the work "Epic Saga"
     And I press "Kudos ♥"

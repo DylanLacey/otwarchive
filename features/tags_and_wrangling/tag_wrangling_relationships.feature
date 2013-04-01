@@ -72,7 +72,7 @@ Scenario: relationship wrangling - syns, mergers, characters, autocompletes
     And I fill in "Work Title" with "Silliness"
     And I fill in "Relationships" with "Janto, Jack/Ianto"
     And I fill in "content" with "And then everyone was kidnapped by an alien bus."
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
   Then I should see "Work was successfully posted."
   
@@ -200,7 +200,7 @@ Scenario: relationship wrangling - syns, mergers, characters, autocompletes
   When I post the work "Pants and skirts"
     And I edit the work "Pants and skirts"
     And I fill in "Relationships" with "Testypants/Testyskirt"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Update"
   Then I should see "Work was successfully updated"
   
@@ -236,7 +236,7 @@ Scenario: relationship wrangling - syns, mergers, characters, autocompletes
     And I fill in "Work Title" with "whatever"
     And I fill in "Relationships" with "Testypants/Testyskirt"
     And I fill in "content" with "a long story about nothing"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
     And I log out
   

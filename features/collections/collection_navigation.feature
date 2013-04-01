@@ -22,7 +22,7 @@ Feature: Basic collection navigation
     And I fill in "Work Title" with "Work for my collection"
     And I fill in "content" with "First because I'm the mod"
     And I fill in "Post to Collections / Challenges" with "my_collection"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
     And I follow "My Collection"
   When I follow "Profile"

@@ -50,7 +50,7 @@ Scenario: fandoms wrangling - syns, mergers, autocompletes, metatags
     And I fill in "Fandoms" with "SG1, the whole Stargate franchise, Stargates SG-1"
     And I fill in "Work Title" with "Silliness"
     And I fill in "content" with "And then everyone was kidnapped by an alien bus."
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
   Then I should see "Work was successfully posted."
   

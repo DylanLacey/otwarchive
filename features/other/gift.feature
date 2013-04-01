@@ -13,7 +13,7 @@ Feature: Create Gifts
     And I am logged in as "myname1" with password "something"
     And I set up the draft "GiftStory1"
     And I fill in "work_recipients" with "myname2"
-    And I press "Preview"
+    And I press "preview_button"
   Then I should see "Preview"
     And I should see "For myname2"
   
@@ -26,7 +26,7 @@ Feature: Create Gifts
   # Give a second gift to same recipient
   Given I set up the draft "GiftStory2"
     And I fill in "work_recipients" with "myname2"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
   Then I should see "GiftStory2"
     And I should see "For myname2"
@@ -44,10 +44,10 @@ Feature: Create Gifts
     And I follow "Edit"
   # Change the recipient of the gift
   Then I fill in "work_recipients" with "myname2"
-    And I press "Preview"
+    And I press "preview_button"
     And 0 emails should be delivered
     And I press "Edit"
-    And I press "Preview"
+    And I press "preview_button"
     And 0 emails should be delivered
     And I press "Update"
     And I should see "For myname3, myname2"

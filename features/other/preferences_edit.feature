@@ -19,7 +19,7 @@ Feature: Edit preferences
   When I post the work "This has two chapters"
   And I follow "Add Chapter"
     And I fill in "content" with "Secondy chapter"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Post"
   Then I should see "Secondy chapter"
     And I follow "Previous Chapter"
@@ -75,7 +75,7 @@ Feature: Edit preferences
     And I follow "Edit"
     And I check "series-options-show"
     And I fill in "work_series_attributes_title" with "My new series"
-    And I press "Preview"
+    And I press "preview_button"
     And I press "Update"
   Then I should see "Work was successfully updated"
   When I log out
