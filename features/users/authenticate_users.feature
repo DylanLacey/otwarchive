@@ -36,8 +36,8 @@ Feature: User Authentication
     And I should see "Change My Password"
 
     # and I should be able to change the password
-    When I fill in "New Password" with "newpass"
-    And I fill in "Confirm New Password" with "newpass"
+    When I fill in "password" with "newpass"
+    And I fill in "password_confirmation" with "newpass"
     And I press "Change Password"
     Then I should see "Your password has been changed"
 
@@ -73,6 +73,7 @@ Feature: User Authentication
       And I press "Reset password"
     Then I should see "Check your email"
       And 1 email should be delivered
+      And I am on the home page
 
     # password from email should work
     When I fill in "User name" with "testuser"
@@ -82,8 +83,8 @@ Feature: User Authentication
     And I should see "Change My Password"
 
     # and I should be able to change the password
-    When I fill in "New Password" with "newpas"
-    And I fill in "Confirm New Password" with "newpas"
+    When I fill in "password" with "newpas"
+    And I fill in "password_confirmation" with "newpas"
     And I press "Change Password"
     Then I should see "Your password has been changed"
 
@@ -141,8 +142,8 @@ Feature: User Authentication
       | login | user  | action                   |
       | sam   | sam   | not see "Log In"         |
       | sam   | sam   | see "Log Out"            |
-      | sam   | sam   | see "Preferences" within "#dashboard .navigation li"    |
+      | sam   | sam   | see "Preferences" within "#dashboard"    |
       | sam   | dean  | see "Log Out"            |
-      | sam   | dean  | not see "Preferences" within "#dashboard .navigation li" |
+      | sam   | dean  | not see "Preferences" within "#dashboard" |
       | sam   | dean  | not see "Log In"         |
 
