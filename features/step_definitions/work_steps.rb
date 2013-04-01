@@ -100,7 +100,7 @@ When /^I post the chaptered work "([^\"]*)"$/ do |title|
   step %{I post the work "#{title}"}
   step %{I follow "Add Chapter"}
   fill_in("content", :with => "Another Chapter.")
-  click_button("Preview")
+  click_button("preview_button")
   step %{I press "Post"}
   Work.tire.index.refresh
 end
@@ -140,7 +140,7 @@ When /^a draft chapter is added to "([^\"]*)"$/ do |work_title|
   visit work_url(work)
   step %{I follow "Add Chapter"}
   step %{I fill in "content" with "la la la la la la la la la la la"}
-  step %{I press "Preview"}
+  step %{I press "preview_button"}
   Work.tire.index.refresh
 end
 
@@ -205,7 +205,7 @@ When /^the draft "([^\"]*)"(?: with fandom "([^\"]*)")?(?: with freeform "([^\"]
   check(category.nil? ? DEFAULT_CATEGORY : category)
   fill_in("Fandoms", :with => fandom.nil? ? DEFAULT_FANDOM : fandom)
   fill_in("Additional Tags", :with => freeform.nil? ? DEFAULT_FREEFORM : freeform)
-  click_button("Preview")
+  click_button("preview_button")
 end
 
 When /^the draft "([^\"]*)" in collection "([^\"]*)"$/ do |title, collection|
@@ -216,7 +216,7 @@ When /^the draft "([^\"]*)" in collection "([^\"]*)"$/ do |title, collection|
   fill_in("Fandoms", :with => "Naruto")
   collection = Collection.find_by_title(collection)
   fill_in("Collections", :with => collection.name)
-  click_button("Preview")
+  click_button("preview_button")
 end
 
 When /^I set up the draft "([^\"]*)"$/ do |title|
@@ -253,7 +253,7 @@ When /^the locked draft "([^\"]*)"$/ do |title|
   visit new_work_url
   step %{I fill in the basic work information for "#{title}"}
   check("work_restricted")
-  click_button("Preview")
+  click_button("preview_button")
 end
 
 When /^I list the work "([^\"]*)" as inspiration$/ do |title|
@@ -300,7 +300,7 @@ When /^I add my work to the collection$/ do
 end
 
 When /^I preview the work$/ do
-  click_button("Preview")
+  click_button("preview_button")
   Work.tire.index.refresh
 end
 

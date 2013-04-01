@@ -36,7 +36,7 @@ Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |login, passw
     user.password_confirmation = password
     user.save
   end
-  visit login_path
+  visit root_path # Avoid ambiguous matching by not being on login_path
   fill_in "User name", :with => login
   fill_in "Password", :with => password
   check "Remember me"
