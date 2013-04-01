@@ -64,10 +64,10 @@ Given /^I am logged in as a random user$/ do
   name = "testuser#{User.count + 1}"
   user = Factory.create(:user, :login => name, :password => DEFAULT_PASSWORD)
   user.activate
-  visit login_path
+  visit root_path # Avoiding ambiguous "User name" matching
   fill_in "User name", :with => name
   fill_in "Password", :with => DEFAULT_PASSWORD
-  check "Remember me"
+  check "user_session_remember_me"
   click_button "Log In"
   assert UserSession.find
 end

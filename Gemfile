@@ -80,7 +80,7 @@ group :test do
   gem 'pickle'
   gem 'shoulda'
   gem 'factory_girl'
-  gem 'capybara', '=0.3.9'
+  gem "capybara", "~> 2.0.2"
   gem 'database_cleaner', '>=0.6.0.rc.3'
   gem 'cucumber-rails'
   gem 'cucumber', '>=1.0.0'
