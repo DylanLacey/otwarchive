@@ -569,7 +569,7 @@ end
 
 When /^I fulfill my claim$/ do
   step %{I start to fulfill my claim with "Fulfilled Story"}
-  step %{I press "Preview"}
+  step %{I press ""preview_button""}
     step %{I press "Post"}
   step %{I should see "Work was successfully posted"}
 end
@@ -584,7 +584,7 @@ When /^I fulfill my claim again$/ do
     step %{I check "No Archive Warnings Apply"}
     step %{I fill in "Fandom" with "Stargate Atlantis"}
     step %{I fill in "content" with "This is an exciting story about Atlantis"}
-  step %{I press "Preview"}
+  step %{I press ""preview_button""}
     step %{I press "Post"}
   step %{I should see "Work was successfully posted"}
 end
@@ -595,7 +595,7 @@ When /^mod fulfills claim$/ do
   step %{I start to fulfill my claim}
     step %{I fill in "Work Title" with "Fulfilled Story-thing"}
     step %{I fill in "content" with "This is an exciting story about Atlantis, but in a different universe this time"}
-  step %{I press "Preview"}
+  step %{I press ""preview_button""}
     step %{I press "Post"}
 end
 
@@ -614,7 +614,7 @@ end
 
 When /^I fulfill my assignment$/ do
   step %{I start to fulfill my assignment}
-  step %{I press "Preview"}
+  step %{I press ""preview_button""}
     step %{I press "Post"}
   step %{I should see "Work was successfully posted"}
 end
@@ -623,7 +623,7 @@ end
 When /^I fulfill my assignment and the author is "([^\"]*)"$/ do |new_user|
   step %{I start to fulfill my assignment}
     step %{I select "#{new_user}" from "Author / Pseud(s)"}
-  step %{I press "Preview"}
+  step %{I press ""preview_button""}
     step %{I press "Post"}
   step %{I should see "Work was successfully posted"}
 

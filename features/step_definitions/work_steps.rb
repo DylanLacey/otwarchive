@@ -121,7 +121,7 @@ When /^I post the work "([^\"]*)" without preview$/ do |title|
   work = Work.find_by_title(title)
   if work.blank?
     step %{I set up the draft "#{title}"}
-    click_button("Post Without Preview")
+    click_button("Post Without Preview)
     Work.tire.index.refresh
     step "I should see \"Work was successfully posted.\""
   end

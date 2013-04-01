@@ -32,7 +32,7 @@ When /^I post a related work$/ do
     step %{I fill in "Work Title" with "Followup"}
     step %{I fill in "content" with "That could be an amusing crossover."}
     step %{I list the work "Worldbuilding" as inspiration}
-    step %{I press "Preview"}
+    step %{I press preview_button"}
   step %{I press "Post"}
 end
 
@@ -56,7 +56,7 @@ When /^I draft a translation$/ do
     step %{I list the work "Worldbuilding" as inspiration}
     step %{I check "This is a translation"}
     step %{I select "Deutsch" from "Choose a language"}
-    step %{I press "Preview"}
+    step %{I press "preview_button}
 end
 
 When /^I approve a related work$/ do
