@@ -11,7 +11,6 @@ Feature: Import Works
     When I go to the import page
       And I fill in "urls" with "http://bogus"
     When I press "Import"
-    And show me the page
-    Then I should see "We were only partially able to import this work and couldn't save it. Please review below!"
+    Then I should see "We were only partially able to import this work and couldn't save it. Please review below!" within "#flash"
     When I go to the works page
     Then I should not see "We were only partially able to import this work and couldn't save it. Please review below!"
