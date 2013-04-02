@@ -14,7 +14,6 @@ require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 #require 'cucumber/rails/active_record'
 #require 'cucumber/web/tableish'
 require 'capybara/rails'
-require 'sauce/cucumber'
 require 'capybara/cucumber'
 require 'capybara/session'
 require 'sauce/cucumber'

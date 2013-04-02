@@ -77,7 +77,6 @@ gem "google_visualr", ">= 2.1"
 
 group :test do
   gem 'sauce'
-  gem 'sauce-cucumber'
   gem 'rspec-rails', '>=2.6.0'
   gem 'pickle'
   gem 'shoulda'
